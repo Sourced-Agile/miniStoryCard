@@ -27,7 +27,33 @@ const SqlGeneratorClass = {
                         NEWS PAGE
                     </div>
                     <div class="titleAcar">
-                        <i class="far fa-wrench"></i>
+                        
+                        <div class="dropdown show">
+                        <a class="" href="#" role="button" style="color: #595959;" id="dropdownMenuLink" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                           <i class="far fa-wrench"></i>
+                        </a>
+
+                        <div class="dropdown-menu" aria-labelledby="dropdownMenuLink">
+                            <a class="dropdown-item" href="#">New Story Card</a>
+                            <a class="dropdown-item" href="#">Print</a>
+                            <a class="dropdown-item" href="#">Save as PDF</a>
+                            <a class="dropdown-item" href="#">Share URL</a>
+                            <a class="dropdown-item" href="#">Copy Prototype URL</a>
+                            <a class="dropdown-item" href="#">View Story Card</a>
+                            <a class="dropdown-item" href="#">View Live Prototype</a>
+                            <a class="dropdown-item" href="#">Edit</a>
+                            <a class="dropdown-item" href="#">Add to Task</a>
+                            <hr style="margin: 2px 0px;">
+                            <a class="dropdown-item" href="#">Export</a>
+                            <a class="dropdown-item" href="#">Copy</a>
+                            <a class="dropdown-item" href="#">Import</a>
+                            <a class="dropdown-item" href="#">History</a>
+                            <hr style="margin: 2px 0px;">
+                            <a class="dropdown-item" href="#">Delete</a>
+                           
+                        </div>
+                        </div>
+                        
                     </div>
                  </div>    
         `
@@ -86,17 +112,26 @@ const SqlGeneratorClass = {
                                 <div class="text-light title ipsum_title">ipsum</div>
 
                                 <div class="ipsum_title_end">
-                                    <div class="dropdown">
-                                            <button class="btnMEnuAcan" type="" id="dropdownMenuButton" data-toggle="dropdown"
-                                                aria-haspopup="true" aria-expanded="false">
-                                                <i class="fal fa-ellipsis-v text-light"></i>
-                                            </button>
-                                            <div class="dropdown-menu btnMEnuAcanselectUcun"
-                                                aria-labelledby="dropdownMenuButton">                                       
-                                                <a class="dropdown-item dropFontSize" onclick='SqlGeneratorClass.addToTAskModal()' href="#">Add to Task </a>                                        
-                                                <a class="dropdown-item dropFontSize" href="#">Delete</a>                                        
-                                            </div>
+                                     <div class="dropdown">
+                                    <button class="btnMEnuAcan" type="" id="dropdownMenuButton" data-toggle="dropdown"
+                                        aria-haspopup="true" aria-expanded="false">
+                                        <i class="fal fa-ellipsis-v text-light"></i>
+                                    </button>
+                                    <div class="dropdown-menu btnMEnuAcanselectUcun"
+                                        aria-labelledby="dropdownMenuButton">
+                                        <a class="dropdown-item dropFontSize" href="#">Add Descriptions </a>
+                                        <a class="dropdown-item dropFontSize" href="#">Set as Output</a>
+                                        <a class="dropdown-item dropFontSize" onclick='SqlGeneratorClass.showPopSell()' href="#">Sel/Grid</a>
+                                        <a class="dropdown-item dropFontSize" onclick='SqlGeneratorClass.addToTAskModal()' href="#">Add to Task </a>
+                                        <a class="dropdown-item dropFontSize" onclick='SqlGeneratorClass.addToTAskModalMulti()' href="#">Add to Task Events</a>
+                                        <a class="dropdown-item dropFontSize" href="#">Copy/Move</a>
+                                        <a class="dropdown-item dropFontSize" onclick='SqlGeneratorClass.deleteINPcRov(this)' href="#">Delete</a>
+                                        <hr style="margin:3px 0px;">
+                                        <a class="dropdown-item dropFontSize" href="#">Add Fields of Table as Input</a>
+                                        <a class="dropdown-item dropFontSize" href="#">Add Input of Story Card As</a>                                     
+
                                     </div>
+                            </div>
 
                                     <button class="ipsum_title_plus ipsum_title_end_icons" id="plusAddIpsum">
                                         <i class="far fa-plus"></i>
@@ -105,7 +140,7 @@ const SqlGeneratorClass = {
                             </div>
                         </div>                        
                         <div class="ipsumInpAdd">
-                            <input id="addIpsumInputt" class="bodyEndInp addInput d-none" placeholder="Title" type="text">
+                            <input id="addIpsumInputt" class="bodyEndInp d-none" placeholder="Title" type="text">
                         </div>
                         <!-- ipsum body -->
                         <div class="ipsumConForAdd d-none">
@@ -117,7 +152,7 @@ const SqlGeneratorClass = {
 
         `
     },
-    genNewDescbody: function (text) {
+    genNewInpbody: function (text) {
         return `
               <div class="descBodyrow">
                     <div class="descSortArrow InpforSortable">
@@ -127,9 +162,9 @@ const SqlGeneratorClass = {
                     <div class="titlebodyCheck dFlex">
                         <input type="checkbox" class='desckCheckBox desckCheckBox'>
                     </div>
-                    <div class="titlebodyText">${text}</div>
+                             <div class="titlebodyText">${text}</div>
                    
-                          <div class="dropdown dropdowndesc">
+                            <div class="dropdown dropdowndesc">
                                 <button class="btnMEnuAcan" type="" id="dropdownMenuButton" data-toggle="dropdown"
                                     aria-haspopup="true" aria-expanded="false">
                                     <i class="far fa-ellipsis-h"></i>
@@ -142,66 +177,15 @@ const SqlGeneratorClass = {
                                     <a class="dropdown-item dropFontSize" onclick='SqlGeneratorClass.desReng(this)' href="#">Blued</a>
                                     <a class="dropdown-item dropFontSize" onclick='SqlGeneratorClass.desReng(this)' href="#">Greened</a>
                                     <a class="dropdown-item dropFontSize" onclick='SqlGeneratorClass.desReng(this)' href="#">Yellowed</a>
-                                    <a class="dropdown-item dropFontSize" onclick='SqlGeneratorClass.deleteThisRov(this)' href="#">Delete</a>                                                                 
+                                    <a class="dropdown-item dropFontSize" onclick='SqlGeneratorClass.desReng(this)' href="#">Remove Highlight</a>
+                                    <a class="dropdown-item dropFontSize" onclick='SqlGeneratorClass.deleteDescRov(this)' href="#">Delete</a>                                                                 
                                 </div>
                             </div>      
                     
-                     </div>
+               </div>
         `
-    },
-    genDescForIpsum: function (text) {
-        return ` <div class="ipsumContaineriAddUcun descCont bgF7F7F7">
-
-                            <div class="d-flex" style="position:relative;">
-                                <div class="descSortArrowTitle bg59">
-                                    <i class="far fa-ellipsis-v text-light"></i>
-                                    <i class="far fa-ellipsis-v text-light"></i>
-                                    </div>
-
-                                <div class="descTitle_sira dFlex text-light">                        
-                                    <span class="titleNomre">1</span>
-                                </div>
-                                <div class="descTitle_title dFlex">                             
-                                    <div class="text-light title">${text}</div>
-                                    <!-- drop -->
-                                    <div class="dropdown">
-                                                <button class="btnMEnuAcan" type="" id="dropdownMenuButton" data-toggle="dropdown"
-                                                    aria-haspopup="true" aria-expanded="false">
-                                                    <i class="fal fa-ellipsis-v text-light"></i>
-                                                </button>
-                                                <div class="dropdown-menu btnMEnuAcanselectUcun"
-                                                    aria-labelledby="dropdownMenuButton">
-                                                    <a class="dropdown-item dropFontSize" href="#">Add Descriptions </a>
-                                                    <a class="dropdown-item dropFontSize" href="#">Set as Output</a>
-                                                    <a class="dropdown-item dropFontSize" onclick='SqlGeneratorClass.showPopSell()' href="#">Sel/Grid</a>
-                                                    <a class="dropdown-item dropFontSize" onclick='SqlGeneratorClass.addToTAskModal()' href="#">Add to Task </a>
-                                                    <a class="dropdown-item dropFontSize" onclick='SqlGeneratorClass.addToTAskModalMulti()' href="#">Add to Task Events</a>
-                                                    <a class="dropdown-item dropFontSize" href="#">Copy/Move</a>
-                                                    <a class="dropdown-item dropFontSize" href="#">Delete</a>
-                                                    <hr style="margin:3px 0px;">
-                                                    <a class="dropdown-item dropFontSize" href="#">Add Fields of Table as Input</a>
-                                                    <a class="dropdown-item dropFontSize" href="#">Add Input of Story Card As</a>                                     
-
-                                                </div>
-                                    </div>                         
-                                    <input type="checkbox" onclick='SqlGeneratorClass.ipsumCheckChange(this)' style="width: 14px;margin-left: 5px;">
-                                </div>
-                                <div class="dFlex">
-                                    <button class="descPlusIcon">
-                                        <i class="far fa-plus"></i>
-                                    </button>
-                                </div>
-                            </div>
-                            <div class="desctBodyContAddUcun">
-                                
-                            </div>              
-
-                            <div class="d-flex justify-content-end bodyEndInpDiv">
-                                <input class="bodyEndInp addInput d-none" placeholder="Title" type="text">
-                            </div>
-                        </div>`
     },    
-    genNewDesc: function (text) {
+    genNewInp: function (text) {
         return `<!-- desc title  -->
             <div class="pb-2 mr-2 descCont bgF7F7F7">
 
@@ -230,7 +214,7 @@ const SqlGeneratorClass = {
                                         <a class="dropdown-item dropFontSize" onclick='SqlGeneratorClass.addToTAskModal()' href="#">Add to Task </a>
                                         <a class="dropdown-item dropFontSize" onclick='SqlGeneratorClass.addToTAskModalMulti()' href="#">Add to Task Events</a>
                                         <a class="dropdown-item dropFontSize" href="#">Copy/Move</a>
-                                        <a class="dropdown-item dropFontSize" onclick='SqlGeneratorClass.deleteDescRov(this)' href="#">Delete</a>
+                                        <a class="dropdown-item dropFontSize" onclick='SqlGeneratorClass.deleteINPcRov(this)' href="#">Delete</a>
                                         <hr style="margin:3px 0px;">
                                         <a class="dropdown-item dropFontSize" href="#">Add Fields of Table as Input</a>
                                         <a class="dropdown-item dropFontSize" href="#">Add Input of Story Card As</a>                                     
@@ -455,11 +439,16 @@ const SqlGeneratorClass = {
     </div>
             `
     },
-    deleteThisRov:function(e) {
-        $(e).closest('.descBodyrow').remove();
+    deleteDescRov: function (e) {
+         if (confirm('are you sure')) {
+             $(e).closest('.descBodyrow').remove();
+             }
     },
-    deleteDescRov:function(e) {
-        $(e).closest('.descCont').remove();
+    deleteINPcRov: function (e, clas) {
+        if(confirm('are you sure')){
+        $(e).closest('.descCont').remove();       
+            SqlGeneratorClass.genForNumbering($('.numForNumbering'));
+            }
     },
     genForNumbering: function (title) {        
         title.each(function (index) {
@@ -469,7 +458,7 @@ const SqlGeneratorClass = {
     desReng: function (el) {
         var reng = $(el).text();
         var elem = $(el).closest('.descBodyrow').find('.titlebodyText');
-    
+        
         if (reng == 'Oranged') {          
             $(elem).css('background-color', '#e9c88b');             
         }
@@ -481,6 +470,10 @@ const SqlGeneratorClass = {
         }
         if (reng == 'Yellowed') {
             $(elem).css('background-color', '#f0f091');          
+        }
+        if (reng == 'Remove Highlight') {
+             console.log(reng);
+             $(elem).css('background', 'none');
         }
     },
     inpCheckChange: function (el) {
@@ -528,7 +521,7 @@ SqlGeneratorClass.loader();
 $(document).on('change', '.addInput', function () {
     var text = $(this).val();
     var body = $(this).closest('.descCont').find('.desctBodyContAddUcun');
-    body.append(SqlGeneratorClass.genNewDescbody(text));
+    body.append(SqlGeneratorClass.genNewInpbody(text));
     $(this).val('');    
 })
 // add desc plus icon
@@ -548,7 +541,7 @@ $(document).on('click', '.cardHeaderPlus', function () {
 // header add desc
 $(document).on('change', '.headAddNewInp', function () {
     var text = $(this).val();
-    $('.descBodyForAdd').prepend(SqlGeneratorClass.genNewDesc(text));
+    $('.descBodyForAdd').prepend(SqlGeneratorClass.genNewInp(text));
     $(this).val('');
 
     $(".desctBodyContAddUcun").sortable({
@@ -569,17 +562,20 @@ $(document).on('click', '.ipsum_title_end_icons', function () {
     $(this).find('i').toggleClass('fa-times fa-plus')
    
 })
-//ipsum ad desc
+//ipsum ad inp
 $(document).on('change', '#addIpsumInputt', function () {   
-    var text = $(this).val();
-    $('.ipsumConForAdd').prepend(SqlGeneratorClass.genDescForIpsum(text));
-     SqlGeneratorClass.genForNumbering($(".titleNomre"));
+    var text = $(this).val();   
+    $('.ipsumConForAdd').prepend(SqlGeneratorClass.genNewInp(text));
+    var elem = $(this).closest('.ipsumContainer').find('.ipsumConForAdd .numForNumbering')    
+    SqlGeneratorClass.genForNumbering($(elem));
+     $(this).val('');
 })
 //desc CHILD dbl click
 $(document).on('dblclick', '.titlebodyText', function () {
     el = $(this);
     var text = el.text();
-    el.text('')
+    el.text('')  
+    el.toggleClass('w-100');
     el.append(`<input id="" class="updateDescInp" type="text">`);
     $('.updateDescInp').focus();
     $('.updateDescInp').val(text);
@@ -589,7 +585,8 @@ $(document).on('dblclick', '.titlebodyText', function () {
 // DESC INP CHANGE
 $(document).on('change', '.updateDescInp', function () {
     var text = $(this).val();
-    $(this).closest('div').append(text)
+    $(this).closest('div').append(text)    
+    $(this).closest('div').toggleClass('w-100');
     $(this).remove();
 })
 

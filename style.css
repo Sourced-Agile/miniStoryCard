@@ -81,15 +81,6 @@ body {
     display: flex;
     flex-wrap: wrap;
 }
-
-.cardHeader {
-    width: 100%;
-    height: 40px;
-    background-color: #E8E8E8;
-    display: flex;
-    align-items: center;
-}
-
 .bodyEndInpDiv {
     display: flex;
     justify-content: end;
@@ -119,8 +110,9 @@ body {
 }
 
 .titleAcar {
+    z-index: 15;
     position: absolute;
-    top: 13px;
+    top: 5px;
     right: 24px;
     color: #595959;
 }
@@ -130,8 +122,9 @@ body {
     position: sticky;
     top: 20px;
     width: 25%;
-    height: 582px;
+    height: 91vh;    
     margin: 0px 0px 12px 0px;
+    border: 1px solid #e8e8e8;
 }
 
 .photoContainerimg {
@@ -147,8 +140,7 @@ body {
 }
 
 .cardheader {
-    background-color: #F7F7F7;
-    overflow: hidden;
+    background-color: #F7F7F7;   
     position: relative;
     display: flex;
     justify-content: center;
@@ -156,15 +148,19 @@ body {
     width: 100%;
     height: 45px;
 }
-
+.titleAcar .dropdown-menu {
+    transform: translate3d(-140px, 38px, 0px) !important;
+}
+.titleAcar .dropdown-item{
+    font-size: 13px;
+}
 .cardTitle {
     font-size: 20px;
     display: flex;
     justify-content: center;
     align-items: center;
     color: #E01E37;
-    max-width: 100%;
-    overflow: hidden;
+    max-width: 100%;    
     height: 100%;
 }
 
@@ -237,7 +233,7 @@ body {
 .titlebodyText {
     margin-left: 5px;
     height: 100%;
-    max-width: 90%;
+    max-width: 100%;
     padding: 0px 2px 0px 2px;
     border-radius: 3px;
     display: flex;
@@ -510,8 +506,7 @@ body {
 }
 .updateDescInp{
     width: 100%;   
-    border: none;
-    border-radius: 5px;
+    border: none;   
     padding-left: 5px;
     height: 20px;   
 }
@@ -523,4 +518,8 @@ body {
 }
 .modal-content{
     padding: 10px !important;
+}
+.ipsumConForAdd{
+    width: 94%;
+    margin-left: 6%;
 }
