@@ -172,7 +172,7 @@ body {
 
 .descTitle_title {
     padding: 0px 5px 0px 5px;
-    width: 150px;
+    min-width: 150px;
     height: 25px;
     display: flex;
     justify-content: end;
@@ -203,6 +203,9 @@ body {
 }
 .descCont:hover .descPlusIcon {
   visibility: visible !important;
+}
+.descCont{
+    width: 100%;
 }
 .buttondesc {
     width: 25px;
@@ -443,12 +446,10 @@ body {
 }
 
 .btnMEnuAcanselectUcun {
-    box-shadow: 5px 5px 18px #595959;
-        position: absolute !important;
-        transform: translate3d(-130px, 22px, 0px) !important;
-        top: 0px;
-        left: 0px;
-        will-change: transform;
+    box-shadow: 5px 5px 18px #595959;       
+        transform: translate3d(-130px, 22px, 0px) !important; 
+        width: 200px;      
+       
 }
 
 .ipsumContainer {
@@ -522,4 +523,7 @@ body {
 .ipsumConForAdd{
     width: 94%;
     margin-left: 6%;
+}
+.updateInpNAme{
+    width: 100%;
 }

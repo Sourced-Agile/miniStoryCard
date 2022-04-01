@@ -2,8 +2,10 @@ const SqlGeneratorClass = {
     loader: function () { 
         $('body').append(this.genBlock());
         $('.descBodyForAdd').sortable({
-             handle: '.InpforSortable'
+            handle: '.InpforSortable'            
         });
+       
+        $('.cardHeaderPlus').trigger('click');
         
        
     },
@@ -17,6 +19,8 @@ const SqlGeneratorClass = {
                   ${this.grnAddToTaskModalMulti()}
                   ${this.cellGripModal()}
                   ${this.cellGripModal()}
+                  ${this.genNewDescModal()}
+                  ${this.genMultiInpModal()}
 
                 `
     },
@@ -77,7 +81,7 @@ const SqlGeneratorClass = {
             ${this.cartConHeader()}
             <div class="descBodyForAdd">          
              
-            ${this.genIPsumContainer()}
+            ${this.genEmptyMessage()}
             </div>
         </div>`
     },
@@ -178,6 +182,7 @@ const SqlGeneratorClass = {
                                     <a class="dropdown-item dropFontSize" onclick='SqlGeneratorClass.desReng(this)' href="#">Greened</a>
                                     <a class="dropdown-item dropFontSize" onclick='SqlGeneratorClass.desReng(this)' href="#">Yellowed</a>
                                     <a class="dropdown-item dropFontSize" onclick='SqlGeneratorClass.desReng(this)' href="#">Remove Highlight</a>
+                                    <a class="dropdown-item dropFontSize" href="#" style="width:150px;height: 25px;"><label for="upload">Add File</label><input class="d-none" id="upload" type="file" /></a>
                                     <a class="dropdown-item dropFontSize" onclick='SqlGeneratorClass.deleteDescRov(this)' href="#">Delete</a>                                                                 
                                 </div>
                             </div>      
@@ -214,6 +219,8 @@ const SqlGeneratorClass = {
                                         <a class="dropdown-item dropFontSize" onclick='SqlGeneratorClass.addToTAskModal()' href="#">Add to Task </a>
                                         <a class="dropdown-item dropFontSize" onclick='SqlGeneratorClass.addToTAskModalMulti()' href="#">Add to Task Events</a>
                                         <a class="dropdown-item dropFontSize" href="#">Copy/Move</a>
+                                        <a class="dropdown-item dropFontSize" onclick='SqlGeneratorClass.addMultiInp()' href="#">Add Multi Input</a>
+                                        <a class="dropdown-item dropFontSize" onclick='SqlGeneratorClass.addEwentDescModal()' href="#">Add Event Description</a>
                                         <a class="dropdown-item dropFontSize" onclick='SqlGeneratorClass.deleteINPcRov(this)' href="#">Delete</a>
                                         <hr style="margin:3px 0px;">
                                         <a class="dropdown-item dropFontSize" href="#">Add Fields of Table as Input</a>
@@ -439,6 +446,128 @@ const SqlGeneratorClass = {
     </div>
             `
     },
+    genNewDescModal: function () {
+        return `<div class="modal fade" id="addEventDescModal" tabindex="-1" style="z-index: 50000" role="dialog" aria-labelledby="" aria-hidden="true">
+        <div class="modal-dialog modal-lg" style="width: 50%;max-width: 50%" role="document">
+            <div class="modal-content">
+                <div class="modal-header">
+                    <h5 class="modal-title" id="selectFromDbModal-title">Add Event Description</h5>
+                    <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                        <span aria-hidden="true">&times;</span>
+                    </button>
+
+                </div>
+                <div class="modal-body">
+
+                    <div class="row">
+
+                        <div class="form-group col-12" style="font-size:14px;">
+                            <input type="hidden" id="addEventDescModal-input-id">
+                            <div class="row ">
+                                <div class="form-group  col-2">
+                                    <span style="width: 100%;"> Select Action </span><br>
+                                    <select id="addEventDescModal-actiontype1" class='form-control '>
+                                        <option value="onclick">onclick</option>
+                                        <option value="onchange">onchange</option>
+                                        <option value="ondblick">ondblclick</option>
+                                        <option value="onfocus">onfocus</option>
+                                        <option value="onfocusin">onfocusin</option>
+                                        <option value="onfocusout">onfocusout</option>
+                                        <option value="onkeypress">onkeypress</option>
+                                        <option value="onkeyup">onkeyup</option>
+                                        <option value="onkeydown">onkeydown</option>
+                                    </select>
+                                </div>
+                                <div class="form-group create-new-text-4-desc col-7">
+                                    <div class="create-new-text-4-newapi  d-none">
+                                        <span style="width: 100%;"> Name Api </span><br>
+                                        <input type="text" id="addEventDescModal-new-api-nm" class='form-control ' style=" padding:10px 0px;  ">
+                                        <button type="button" data-type='oldApi' class="btn float-right btn-change-mode-eventapi btn-primary">Back
+                                        </button>
+                                    </div>
+                                    <div class="create-new-text-4-newapi">
+                                        <span style="width: 100%;"> Select Api </span><br>
+                                        <select id="addEventDescModal-apiId" data-live-search="true" class='form-control create-new-db-4-select'>
+                                        </select>
+                                        <button type="button" data-type='newApi' class="btn float-right btn-change-mode-eventapi tn-primary" style='margin-top:5px;'>New Api</button>
+                                    </div>
+
+                                    <button type="button" data-type='text' class="btn btn-primary" style='margin-top:5px;'>Add text</button>
+                                </div>
+                                <div class="form-group create-new-text-4-desc d-none col-7">
+                                    <span style="width: 100%;">Text Description</span><br>
+                                    <input type="text" id="addEventDescModal-text" class='form-control create-new-db-4-select' style=" padding:10px 0px;">
+                                    <button type="button" data-type='api' class="btn btn-change-mode-eventhesc btn-primary" style='margin-top:5px;'>Add api</button>
+                                </div>
+
+
+                            </div>
+
+                        </div>
+                        <div class="form-group col-12 text-right">
+                            <br>
+                            <button type="button" class="btn btn-primary" onclick="">Add</button>
+                            <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
+                        </div>
+
+
+
+                    </div>
+
+                </div>
+
+            </div>
+        </div>
+    </div>`
+    },
+    genMultiInpModal: function () {
+        return `
+        <div class="modal fade" id="inputTableAddColumnsModal" tabindex="-1" role="dialog" aria-labelledby="" aria-hidden="true">
+        <div class="modal-dialog modal-lg" style="min-width: 50%;max-width: 50%" role="document">
+            <div class="modal-content">
+                <div class="modal-header text-center">
+                    <h5 class="modal-title">Add Inputs (Columns)</h5>
+                    <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                        <span aria-hidden="true">&times;</span>
+                    </button>
+                </div>
+                <div class="modal-body">
+                    <div class='row'>
+                        <div class="col-12" hidden>
+                            <input type="hidden" id="inputTableAddColumnsModal-id">
+                        </div>
+                        <div class="col-12" id="inputTableAddColumnsModal-inputs">
+
+                        </div>
+                        <div class="col-12">
+                            <!--                        <hr>-->
+                        </div>
+                        <div class="col-12" style="padding-top: 30px" id="inputTableAddColumnsModal-newinput-toggle">
+                            <input class="form-control" style="max-width:100%" placeholder="Add new column" id="inputTableAddColumnsModal-newinput">
+                        </div>
+
+                    </div>
+
+                </div>
+                <div class="modal-footer" style="display:block;">
+                    <button type="button" class="btn btn-primary" onclick="">
+                        Add
+                    </button>
+                    <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
+                </div>
+            </div>
+        </div>
+               </div>
+               `
+    },
+    genEmptyMessage: function () {
+          return '<div class="col-12 empty-message-block" style="padding:30px;text-align:center">' +
+              '<h5> <i class="fa fa-cubes" style="font-size:30px"></i></h5>' +
+              '<h5> No Inputs have been entered on this User Story</h5>' +
+              '<p>All Pages related to the User Story on this project will appear here</p>' +
+              '<p>Please Enter Inputs</p>' +
+              '</div>'
+      },
     deleteDescRov: function (e) {
          if (confirm('are you sure')) {
              $(e).closest('.descBodyrow').remove();
@@ -505,16 +634,22 @@ const SqlGeneratorClass = {
     addToTAskModal: function () {
          $('#addNewDetailedTaskModal').modal('show');
     },
+    addEwentDescModal: function () {
+        $('#addEventDescModal').modal('show');
+    },
     addToTAskModalMulti: function () {
         $('#addNewDetailedTaskModal-multi-new').modal('show');
     },
     showPopSell: function () {
         $('#cellGridModal').modal('show');
+    },
+    addMultiInp: function () {
+        $('#inputTableAddColumnsModal').modal('show');
     }
 
 }
 
-SqlGeneratorClass.loader();
+
 
 
 // add desc inp
@@ -540,10 +675,10 @@ $(document).on('click', '.cardHeaderPlus', function () {
 
 // header add desc
 $(document).on('change', '.headAddNewInp', function () {
+    $('.empty-message-block').remove();
     var text = $(this).val();
     $('.descBodyForAdd').prepend(SqlGeneratorClass.genNewInp(text));
     $(this).val('');
-
     $(".desctBodyContAddUcun").sortable({
         handle: ".descSortArrow",
     });
@@ -572,14 +707,13 @@ $(document).on('change', '#addIpsumInputt', function () {
 })
 //desc CHILD dbl click
 $(document).on('dblclick', '.titlebodyText', function () {
-    el = $(this);
-    var text = el.text();
-    el.text('')  
-    el.toggleClass('w-100');
-    el.append(`<input id="" class="updateDescInp" type="text">`);
+    var text = $(this).text();
+    $(this).text('')
+    $(this).toggleClass('w-100');
+    $(this).append(`<input id="" class="updateDescInp" type="text">`);
     $('.updateDescInp').focus();
     $('.updateDescInp').val(text);
-
+  
 })
 
 // DESC INP CHANGE
@@ -590,12 +724,19 @@ $(document).on('change', '.updateDescInp', function () {
     $(this).remove();
 })
 
-//desc dbl click
+// dbl click
 $(document).on('dblclick', '.title', function () {
     el = $(this);
     var text = el.text();
     el.text('')
-    el.append(`<input id="" class="updateDescInp" value="${text}" type="text">`);
+    el.append(`<input id="" class="updateInpNAme" value="${text}" type="text">`);
+})
+
+// INP CHANGE
+$(document).on('change', '.updateInpNAme', function () {
+    var text = $(this).val();
+    $(this).closest('div').append(text)   
+    $(this).remove();
 })
 
 $(document).on('click', '.btnMEnuAcanselectUcun', function(event) {
@@ -603,7 +744,7 @@ $(document).on('click', '.btnMEnuAcanselectUcun', function(event) {
 })
 
 
-
+SqlGeneratorClass.loader();
  
 
 
