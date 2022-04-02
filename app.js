@@ -81,7 +81,8 @@ const SqlGeneratorClass = {
             ${this.cartConHeader()}
             <div class="descBodyForAdd">          
              
-            ${this.genEmptyMessage()}
+            ${this.genNewInp()}
+            ${this.genIPsumContainer()}
             </div>
         </div>`
     },
